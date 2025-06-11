@@ -1,0 +1,20 @@
+.bubble {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  max-width: 60%;
+  display: inline-block;
+  clear: both;
+}
+
+.me {
+  background-color: #daf8cb;
+  float: right;
+  text-align: right;
+}
+
+.them {
+  background-color: #ffffff;
+  float: left;
+  text-align: left;
+}

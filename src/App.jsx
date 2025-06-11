@@ -1,12 +1,6 @@
-import './App.css'
+import React from "react";
+import ChatPage from "./pages/ChatPage.jsx";
 
-function App() {
+const App = () => <ChatPage />;
 
-  return (
-    <div>
-      TeamTalkPro
-    </div>
-  )
-}
-
-export default App
+export default App;
