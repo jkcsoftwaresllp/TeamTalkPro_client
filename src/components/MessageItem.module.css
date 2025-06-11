@@ -1,0 +1,222 @@
+.message {
+  max-width: 70%;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0.75rem 1.1rem;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+  user-select: text;
+  outline: none;
+  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message:focus {
+  box-shadow: 0 0 0 3px #2563ebaa;
+  outline: none;
+}
+
+.sender {
+  margin-left: auto;
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+}
+
+.receiver {
+  margin-right: auto;
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  color: #6b7280;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.senderName {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+  color: #6b7280;
+}
+
+.messageText {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.messageMedia {
+  margin-top: 0.4rem;
+}
+
+.mediaElement {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
+}
+
+.messageFile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #e5e7eb;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  max-width: 300px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.messageFile:focus {
+  box-shadow: 0 0 0 2px #2563ebaa;
+}
+
+/* For receiver message meta */
+.meta {
+  margin-top: 0.35rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #6b7280;
+  user-select: none;
+}
+
+.meta.senderMeta {
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: #ffffff; 
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  align-items: center;
+  user-select: none;
+}
+
+.status {
+  font-style: italic;
+  color: #ffffff;
+}
+
+.actions {
+  position: relative;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message:hover .actions,
+.message:focus .actions {
+  opacity: 1;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 2px 6px;
+  border-radius: 0.35rem;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.actionBtn:hover,
+.actionBtn:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.editingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.editingTextarea {
+  width: 100%;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+
+.editingTextarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+.editingActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.saveBtn,
+.cancelBtn {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  border-radius: 0.45rem;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.saveBtn {
+  background-color: #2563eb;
+  color: white;
+  transition: background-color 0.25s;
+}
+
+.saveBtn:hover,
+.saveBtn:focus {
+  background-color: #1d4ed8;
+  outline: none;
+}
+
+.cancelBtn {
+  background-color: #e5e7eb;
+  color: #374151;
+  transition: background-color 0.25s;
+}
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+  background-color: #d1d5db;
+  outline: none;
+}
+
+
+
