@@ -1,0 +1,40 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 100vw;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  color: #6b7280;
+}
+
+.header {
+  padding: 2rem 2.5rem;
+  font-weight: 700;
+  font-size: 3rem; /* about 48px */
+  color: #111827;
+  user-select: none;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.chat {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
