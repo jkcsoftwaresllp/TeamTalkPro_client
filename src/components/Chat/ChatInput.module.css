@@ -1,0 +1,135 @@
+.chatInput {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  align-items: center;
+  position: relative;
+}
+
+.textarea {
+  flex: 1 1 auto;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.65rem 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #111827;
+  resize: none;
+  min-height: 40px;
+  max-height: 120px;
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.emojiBtn,
+.sendBtn,
+.fileLabel {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 0.75rem;
+  width: 36px;
+  height: 36px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+  padding: 0;
+}
+
+.emojiBtn:disabled,
+.sendBtn:disabled,
+.fileLabel:disabled {
+  background-color: #d1d5db;
+  cursor: default;
+}
+
+.emojiBtn:hover:not(:disabled),
+.sendBtn:hover:not(:disabled),
+.fileLabel:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.fileInput {
+  display: none;
+}
+
+.filePreview {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  max-width: 140px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.filePreviewImg {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filePreviewText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.fileRemoveBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+}
+
+.fileRemoveBtn:hover,
+.fileRemoveBtn:focus {
+  color: #ef4444;
+  outline: none;
+  text-shadow: 0 0 4px #ef4444aa;
+}
+
+.emojiPicker {
+  position: absolute;
+  bottom: 60px;
+  right: 1.25rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  width: 280px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  gap: 6px;
+}
