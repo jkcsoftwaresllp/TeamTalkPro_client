@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import EmojiPicker from './EmojiPicker'
 import styles from './ChatInput.module.css'
 
-// Generate unique ID for new messages
 function generateId() {
   return 'msg-' + Math.random().toString(36).slice(2, 11)
 }
@@ -19,22 +18,19 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
     setShowEmojiPicker((v) => !v)
   }, [])
 
-  const onSelectEmoji = useCallback(
-    (emoji) => {
-      const input = textareaRef.current
-      if (!input) return
-      const start = input.selectionStart
-      const end = input.selectionEnd
-      const newValue = text.slice(0, start) + emoji + text.slice(end)
-      setText(newValue)
-      setShowEmojiPicker(false)
-      setTimeout(() => {
-        input.focus()
-        input.selectionStart = input.selectionEnd = start + emoji.length
-      }, 0)
-    },
-    [text]
-  )
+  const onSelectEmoji = useCallback((emoji) => {
+    const input = textareaRef.current
+    if (!input) return
+    const start = input.selectionStart
+    const end = input.selectionEnd
+    const newValue = text.slice(0, start) + emoji + text.slice(end)
+    setText(newValue)
+    setShowEmojiPicker(false)
+    setTimeout(() => {
+      input.focus()
+      input.selectionStart = input.selectionEnd = start + emoji.length
+    }, 0)
+  }, [text])
 
   const onFileChange = (e) => {
     if (e.target.files.length) {
@@ -57,32 +53,24 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
       senderId: currentUser.id,
       senderName: currentUser.name,
       senderInitial: currentUser.initial,
-      text: '',
+      text: text.trim(),
       type: 'text',
       mediaUrl: '',
       fileName: '',
       timestamp: Date.now(),
-      status: 'sent',
-      isEditing: false,
+      status: 'sent'
     }
 
     if (selectedFile) {
-      if (
-        selectedFile.type.startsWith('image/') ||
-        selectedFile.type.startsWith('video/')
-      ) {
+      const url = URL.createObjectURL(selectedFile)
+      if (selectedFile.type.startsWith('image/') || selectedFile.type.startsWith('video/')) {
         message.type = 'media'
-        message.mediaUrl = URL.createObjectURL(selectedFile)
-        message.fileName = selectedFile.name
-        message.text = text.trim()
+        message.mediaUrl = url
       } else {
         message.type = 'file'
-        message.fileName = selectedFile.name
-        message.text = text.trim()
+        message.mediaUrl = url
       }
-    } else {
-      message.type = 'text'
-      message.text = text.trim()
+      message.fileName = selectedFile.name
     }
 
     onSend(message)
@@ -108,7 +96,7 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
   }, [showEmojiPicker])
 
   return (
-    <form className={styles.chatInput} onSubmit={handleSend} aria-label="Send message">
+    <form className={styles.chatInput} onSubmit={handleSend}>
       <textarea
         ref={textareaRef}
         className={styles.textarea}
@@ -116,7 +104,6 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Type a message"
-        aria-label="Message input"
         disabled={disabled}
       />
       <div className={styles.buttons}>
@@ -124,21 +111,10 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
           type="button"
           className={styles.emojiBtn}
           onClick={toggleEmojiPicker}
-          aria-label="Toggle emoji picker"
-          title="Emoji picker"
           ref={emojiButtonRef}
-          tabIndex={0}
           disabled={disabled}
-        >
-          😊
-        </button>
-        <label
-          htmlFor="file-upload"
-          className={styles.fileLabel}
-          title="Attach file"
-          tabIndex={0}
-          aria-label="Attach file"
-        >
+        >😊</button>
+        <label htmlFor="file-upload" className={styles.fileLabel}>
           📎
           <input
             type="file"
@@ -146,19 +122,14 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
             onChange={onFileChange}
             ref={fileInputRef}
             className={styles.fileInput}
-            aria-hidden="true"
-            tabIndex={-1}
             disabled={disabled}
           />
         </label>
         <button
           type="submit"
           className={styles.sendBtn}
-          aria-label="Send message"
           disabled={isSendDisabled}
-        >
-          ➤
-        </button>
+        >➤</button>
       </div>
       {showEmojiPicker && (
         <div className={styles.emojiPicker}>
@@ -166,16 +137,11 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
         </div>
       )}
       {selectedFile && (
-        <div
-          className={styles.filePreview}
-          role="region"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <div className={styles.filePreview}>
           {selectedFile.type.startsWith('image/') ? (
             <img
               src={URL.createObjectURL(selectedFile)}
-              alt="Selected file preview"
+              alt="Preview"
               className={styles.filePreviewImg}
             />
           ) : (
@@ -185,11 +151,8 @@ export default function ChatInput({ currentUser, onSend, disabled }) {
             type="button"
             className={styles.fileRemoveBtn}
             onClick={clearFile}
-            aria-label="Remove selected file"
             title="Remove file"
-          >
-            ×
-          </button>
+          >×</button>
         </div>
       )}
     </form>
