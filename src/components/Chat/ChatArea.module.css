@@ -1,0 +1,8 @@
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+}

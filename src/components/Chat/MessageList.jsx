@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { fetchMessages } from './api';
 import MessageBubble from './MessageBubble';
@@ -38,3 +39,22 @@ function MessageList({ chatId }) {
 }
 
 export default MessageList;
+=======
+import React from 'react'
+import MessageItem from './MessageItem'
+import styles from './MessageList.module.css'
+
+export default function MessageList({ messages = [], currentUser }) {
+  return (
+    <div className={styles.messageList}>
+      {messages.map((msg) => (
+        <MessageItem
+          key={msg.id}
+          message={msg}
+          isSender={msg.senderId === currentUser.id}
+        />
+      ))}
+    </div>
+  )
+}
+>>>>>>> 77d58d972ceac77196f85339b7a2e3006f0ac296
