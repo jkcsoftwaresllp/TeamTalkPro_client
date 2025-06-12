@@ -1,12 +1,13 @@
-<<<<<<< HEAD
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { fetchMessages } from './api';
 import MessageBubble from './MessageBubble';
 import useDebounce from './debounce';
+import MessageItem from './MessageItem';
+import styles from './MessageList.module.css';
 
 const LIMIT = 20;
 
-function MessageList({ chatId }) {
+function PaginatedMessageList({ chatId }) {
   const [messages, setMessages] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -32,17 +33,11 @@ function MessageList({ chatId }) {
 
   return (
     <div>
-      <div ref={loader}>Loading...</div> {/* ✅ removed styles.loader */}
+      <div ref={loader}>Loading...</div>
       {messages.map(msg => <MessageBubble key={msg.id} message={msg} />)}
     </div>
   );
 }
-
-export default MessageList;
-=======
-import React from 'react'
-import MessageItem from './MessageItem'
-import styles from './MessageList.module.css'
 
 export default function MessageList({ messages = [], currentUser }) {
   return (
@@ -55,6 +50,5 @@ export default function MessageList({ messages = [], currentUser }) {
         />
       ))}
     </div>
-  )
+  );
 }
->>>>>>> 77d58d972ceac77196f85339b7a2e3006f0ac296
